@@ -104,6 +104,7 @@ public class ObjectController : MonoBehaviour
     public void OnPointerClick()
     {
         TeleportRandomly();
+        print("click");
     }
 
     /// <summary>

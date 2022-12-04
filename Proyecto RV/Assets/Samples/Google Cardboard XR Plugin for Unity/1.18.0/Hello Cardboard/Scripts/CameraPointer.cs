@@ -24,26 +24,30 @@ using UnityEngine;
 /// </summary>
 public class CameraPointer : MonoBehaviour
 {
-    private const float _maxDistance = 100;
+    // Vatiable Globales
+    private const float _maxDistance = 10;
     private GameObject _gazedAtObject = null;
-    int layerMask;
+    private int layerMask;
+
     public GameObject puntero;
-    /// <summary>
-    /// 
+
+    private bool inHands = false;
+
     private void Start()
     {
         layerMask = 1 << LayerMask.NameToLayer("tocable");
     }
+    /// <summary>
     /// Update is called once per frame.
     /// </summary>
     public void Update()
     {
-        Debug.DrawLine(transform.position, transform.position + transform.forward * _maxDistance);
+        //Debug.DrawLine(transform.position, transform.position + transform.forward * _maxDistance);
         puntero.transform.position = transform.position + transform.forward * _maxDistance;
         // Casts ray towards camera's forward direction, to detect if a GameObject is being gazed
         // at.
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, _maxDistance,layerMask))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, _maxDistance, layerMask))
         {
             // GameObject detected in front of the camera.
             if (_gazedAtObject != hit.transform.gameObject)
@@ -53,7 +57,9 @@ public class CameraPointer : MonoBehaviour
                 _gazedAtObject = hit.transform.gameObject;
                 _gazedAtObject.SendMessage("OnPointerEnter");
                 puntero.transform.GetChild(0).GetComponent<Animator>().SetTrigger("grande");
+
             }
+ 
         }
         else
         {
@@ -67,15 +73,19 @@ public class CameraPointer : MonoBehaviour
         }
 
         // Checks for screen touches.
-        if (Input.GetButton("A"))
+        if (Input.GetButton("Fire1"))
         {
             _gazedAtObject?.SendMessage("OnPointerClick");
-            print("AAA");
 
         }
-        if (Input.GetButtonDown("A"))
+
+        if (Input.GetButtonDown("Fire2") && !inHands && hit.transform.tag == "tornillo")
         {
+            Debug.Log("Quiero cogerlo...");
+
+            _gazedAtObject?.SendMessage("OnPointerClick");
 
         }
+
     }
 }
