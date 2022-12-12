@@ -53,13 +53,13 @@ public class CameraPointer : MonoBehaviour
             if (_gazedAtObject != hit.transform.gameObject)
             {
                 // New GameObject.
-                _gazedAtObject?.SendMessage("OnPointerExit");
+                _gazedAtObject?.SendMessage("MyOnPointerExit");
                 _gazedAtObject = hit.transform.gameObject;
-                _gazedAtObject.SendMessage("OnPointerEnter");
+                _gazedAtObject.SendMessage("MyOnPointerEnter");
                 puntero.transform.GetChild(0).GetComponent<Animator>().SetTrigger("grande");
 
             }
- 
+
         }
         else
         {
@@ -68,22 +68,22 @@ public class CameraPointer : MonoBehaviour
                 puntero.transform.GetChild(0).GetComponent<Animator>().SetTrigger("peque");
             }
             // No GameObject detected in front of the camera.
-            _gazedAtObject?.SendMessage("OnPointerExit");
+            _gazedAtObject?.SendMessage("MyOnPointerExit");
             _gazedAtObject = null;
         }
 
         // Checks for screen touches.
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("R1"))
         {
-            _gazedAtObject?.SendMessage("OnPointerClick");
+            _gazedAtObject?.SendMessage("MyOnPointerClick");
 
         }
 
-        if (Input.GetButtonDown("Fire2") && !inHands && hit.transform.tag == "tornillo")
+        if (Input.GetButtonDown("R2") && !inHands && hit.transform.tag == "tornillo")
         {
             Debug.Log("Quiero cogerlo...");
 
-            _gazedAtObject?.SendMessage("OnPointerClick");
+            _gazedAtObject?.SendMessage("Grab");
 
         }
 

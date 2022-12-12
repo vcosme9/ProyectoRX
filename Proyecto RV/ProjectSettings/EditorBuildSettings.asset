@@ -5,8 +5,17 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/base.unity
+  - enabled: 0
+    path: Assets/Scenes/base.unity
     guid: 0c9853bec8eb8dc439941da2c8883f80
+  - enabled: 1
+    path: Assets/Scenes/menu_ini.unity
+    guid: e56eb1de483df3349b7289e872e1cf03
+  - enabled: 1
+    path: Assets/Scenes/video360.unity
+    guid: 1fd8e5e0c4179ac4fa25ede678f9914c
+  - enabled: 1
+    path: Assets/Scenes/Nave rota.unity
+    guid: 99cbea4d9ecc9874a8c97a2a88c9ea99
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: e87a2133ea437ca4683dc2aba16b8911, type: 2}

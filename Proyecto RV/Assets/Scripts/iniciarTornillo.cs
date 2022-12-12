@@ -88,6 +88,7 @@ public class iniciarTornillo : MonoBehaviour
                 }
             }
             // sacamos el tornillo de Player y lo metemos en Nave
+            screw.GetComponent<Light>().intensity = 0;
             screw.SetParent(spaceship);
             switch (screwCounter)
             {

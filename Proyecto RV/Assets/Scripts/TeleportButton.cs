@@ -22,7 +22,7 @@ public class TeleportButton : MonoBehaviour
         white = _myImage.material;
     }
 
-    public void OnPointerEnter()
+    public void MyOnPointerEnter()
     {
         print("Entra");
         if (!isColliding)
@@ -31,7 +31,7 @@ public class TeleportButton : MonoBehaviour
         }
         isLooking = true;
     }
-    public void OnPointerExit()
+    public void MyOnPointerExit()
     {
         print("Sale");
         if (!isColliding)
@@ -40,7 +40,7 @@ public class TeleportButton : MonoBehaviour
         }
         isLooking = false;
     }
-    public void OnPointerClick()
+    public void MyOnPointerClick()
     {
         if (!isColliding)
         {
